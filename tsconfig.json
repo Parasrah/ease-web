@@ -18,8 +18,7 @@
   },
   "include": [
     "./src/**/*",
-    "./test/**/*",
-    "./app.ts"
+    "./test/**/*"
   ],
   "exclude": [
     "./node_modules"

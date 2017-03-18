@@ -2,18 +2,16 @@ import * as express from "express";
 
 const app = express();
 
-const ROOT = __dirname + "/..";
-
 const port = process.env.PORT || 8340;
 
-app.use("/public", express.static(__dirname + "/public"));
+app.use("/public", express.static(__dirname + "dist/public"));
 
 app.get("/", (req, res) => {
-    res.sendFile(ROOT + "/index.html");
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.get("bundle.js", (req, res) => {
-    res.sendFile(ROOT + "/dist/bundle.js");
+    res.sendFile(__dirname + "/dist/bundle.js");
 });
 
 app.listen(port, "0.0.0.0", () => {
