@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { Page } from "../definition/Structures";
+import "../style/main.less";
 import { StartPageContainer } from "./StartPage";
 import { VideoClientPageContainer } from "./video/VideoClientPage";
 

@@ -1,4 +1,3 @@
-import { clipboard } from "electron";
 import * as React from "react";
 
 import { setPlayStatusAction, setVideoReadyAction } from "../../actions/VideoActions";
@@ -151,10 +150,6 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
                 default:
             }
         });
-    }
-
-    protected copyClick = () => {
-        clipboard.writeText(this.props.id);
     }
 
     /******************** Abstract Methods *******************/

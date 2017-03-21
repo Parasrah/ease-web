@@ -87,7 +87,6 @@ export class VideoClientPage extends VideoPage<IClientProps> {
         return (
             <div className="video">
                 <b> ID: </b> {this.props.id}
-                <button onClick={this.copyClick}>copy</button>
                 <button onClick={this.peerManager.reconnect}>reconnect</button>
                 <VideoElement
                     poster=""
@@ -133,9 +132,7 @@ export class VideoClientPage extends VideoPage<IClientProps> {
     }
 }
 
-const VideoClientPageContainer = connect(
+export const VideoClientPageContainer = connect(
     VideoClientPage.mapStateToProps,
     VideoClientPage.mapDispatchToProps,
 )(VideoClientPage);
-
-export default VideoClientPageContainer;

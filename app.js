@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-app.get("bundle.js", (req, res) => {
+app.get("/bundle.js", (req, res) => {
     res.sendFile(__dirname + "/dist/bundle.js");
 });
 
