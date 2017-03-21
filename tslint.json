@@ -70,12 +70,8 @@
         "no-unused-new": true,
         "no-string-literal": true,
         "no-string-throw": true,
-        "no-invalid-this": true,
         "member-ordering": [
             false
-        ],
-        "only-arrow-functions": [
-            true
         ],
         "one-line": [
             true,
@@ -90,10 +86,6 @@
             true,
             "always"
         ],
-        "triple-equals": [
-            true,
-            "allow-null-check"
-        ],
         "typedef-whitespace": [
             true,
             {
@@ -103,10 +95,6 @@
                 "property-declaration": "nospace",
                 "variable-declaration": "nospace"
             }
-        ],
-        "variable-name": [
-            true,
-            "ban-keywords"
         ],
         "whitespace": [
             true,
@@ -142,7 +130,6 @@
         "align": [
             true
         ],
-        "arrow-return-shorthand": true,
         "newline-before-return": true,
         "object-literal-shorthand": true,
         "prefer-method-signature": true,
