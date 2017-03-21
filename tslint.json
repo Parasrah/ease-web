@@ -136,6 +136,9 @@
         "object-literal-key-quotes": [
             true,
             "as-needed"
+        ],
+        "only-arrow-functions": [
+            false
         ]
     }
 }
