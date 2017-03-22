@@ -21,11 +21,11 @@ interface IStartPageState {
 
 }
 
-type IStartPageProps = IStartPageInputProps & IStartPageStoreProps & IStartPageDispatchProps;
+type StartPageProps = IStartPageInputProps & IStartPageStoreProps & IStartPageDispatchProps;
 
-export class StartPage extends React.Component<IStartPageProps, IStartPageState> {
+export class StartPage extends React.Component<StartPageProps, IStartPageState> {
 
-    constructor(props: IStartPageProps) {
+    constructor(props: StartPageProps) {
         super(props);
     }
 
