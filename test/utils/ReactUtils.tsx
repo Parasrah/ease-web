@@ -5,7 +5,7 @@ import { StoreWrapper } from "../../src/redux/Store";
 
 export function getComponent(element: JSX.Element) {
     return (
-        <Provider store={StoreWrapper.getInstance().getStore()}>
+        <Provider store={StoreWrapper.configureStore()}>
             {element}
         </Provider>
     );

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { Page } from "../definition/Structures";
 import "../style/main.less";
+import { Page } from "../utils/Definitions";
 import { StartPageContainer } from "./StartPage";
 import { VideoClientPageContainer } from "./video/VideoClientPage";
 
@@ -28,7 +28,7 @@ export class AppContainer extends React.Component<IAppContainerProps, IAppContai
                 this.pageElement = <StartPageContainer />;
                 break;
 
-            case Page.VIDEO:
+            case Page.VIDEO_CLIENT:
                 this.pageElement = <VideoClientPageContainer />;
                 break;
 

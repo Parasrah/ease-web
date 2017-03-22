@@ -4,7 +4,7 @@ import { ThunkAction } from "redux-thunk";
 import { SignalData } from "simple-peer";
 import * as SocketIOClient from "socket.io-client";
 import { watchServerStatusAction } from "../actions/CommonPeerActions";
-import { IClientPeerState, IHostPeerState, IState } from "../redux/State";
+import { IClientPeerState, IState } from "../redux/State";
 import { StoreWrapper } from "../redux/Store";
 
 export interface IOfferMessage {
@@ -45,10 +45,6 @@ export abstract class AbstractSignaler {
 
     protected getVideoReady() {
         return this.getState().videoState.videoReady;
-    }
-
-    protected getHostState(): IHostPeerState {
-        return this.getState().hostPeerState;
     }
 
     protected getClientState(): IClientPeerState {

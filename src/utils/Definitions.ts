@@ -1,11 +1,9 @@
-import { SignalData } from "simple-peer";
-
 /*
  * Contains any definitions required in the redux logic
  */
 
 export enum Page {
-    START = 1, VIDEO_HOST, VIDEO_CLIENT,
+    START = 1, VIDEO_CLIENT,
 }
 
 /**
@@ -17,13 +15,6 @@ export enum Page {
  */
 export enum WebrtcStatus {
     PENDING = 1, CONNECTED, ERROR,
-}
-
-export interface IPeer {
-    peerStatus: boolean;
-    clientID: string;
-    clientSignalData: SignalData[];
-    hostSignalData: SignalData[];
 }
 
 export enum UserType {

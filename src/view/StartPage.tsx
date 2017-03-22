@@ -1,7 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import { changePageAction } from "../actions/AppActions";
 import IState from "../redux/State";
+import { Page } from "../utils/Definitions";
 
 interface IStartPageInputProps {
 
@@ -12,19 +14,27 @@ interface IStartPageStoreProps {
 }
 
 interface IStartPageDispatchProps {
-
+    changePageDispatch: changePageAction;
 }
 
 interface IStartPageState {
 
 }
 
-type IStartPageProps = IStartPageInputProps & IStartPageStoreProps;
+type IStartPageProps = IStartPageInputProps & IStartPageStoreProps & IStartPageDispatchProps;
 
-class StartPage extends React.Component<IStartPageProps, IStartPageState> {
+export class StartPage extends React.Component<IStartPageProps, IStartPageState> {
 
     constructor(props: IStartPageProps) {
         super(props);
+    }
+
+    /*********************** Callbacks ***************************/
+
+    private idInputKeyDown: React.EventHandler<React.KeyboardEvent<HTMLInputElement>> = (event) => {
+        if (event.key == "enter") {
+            this.props.changePageDispatch(Page.START);
+        }
     }
 
     /********************* React Lifecycle ***********************/
@@ -32,7 +42,11 @@ class StartPage extends React.Component<IStartPageProps, IStartPageState> {
     public render(): JSX.Element {
         return (
             <div className="start-page">
-                <input type="text" className="id-input"/>
+                <input
+                    type="text"
+                    className="id-input"
+                    onKeyDown={this.idInputKeyDown}
+                />
             </div>
         );
     }
@@ -47,7 +61,7 @@ class StartPage extends React.Component<IStartPageProps, IStartPageState> {
 
     public static mapDispatchToProps(dispatch): IStartPageDispatchProps {
         return {
-
+            changePageDispatch: (page) => dispatch(changePageAction(page)),
         };
     }
 }
