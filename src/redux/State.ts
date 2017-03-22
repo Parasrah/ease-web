@@ -6,7 +6,6 @@ export interface IState {
     readonly videoState: IVideoState;
     readonly commonPeerState: ICommonPeerState;
     readonly clientPeerState: IClientPeerState;
-    readonly hostPeerState: IHostPeerState;
     readonly settingsState: ISettingsState;
 }
 
@@ -33,10 +32,6 @@ export interface IVideoState {
 export interface ICommonPeerState {
     id: string;
     serverStatus: boolean;
-}
-
-export interface IHostPeerState {
-    hostPeers: Def.IPeer[];
 }
 
 export interface IClientPeerState {

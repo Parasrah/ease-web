@@ -139,6 +139,9 @@
         ],
         "only-arrow-functions": [
             false
+        ],
+        "triple-equals": [
+            false
         ]
     }
 }

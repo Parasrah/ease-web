@@ -11,10 +11,6 @@ export abstract class AbstractMessenger {
         return this.storeWrapper.getState().clientPeerState;
     }
 
-    protected getHostPeerState() {
-        return this.storeWrapper.getState().hostPeerState;
-    }
-
     protected getVideoState() {
         return this.storeWrapper.getState().videoState;
     }
