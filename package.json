@@ -11,7 +11,7 @@
     "test:react": "mocha --recursive dist/test/react --opts ./test/react/mocha.opts",
     "clean": "rimraf dist/*",
     "rebuild": "npm run clean && npm run build",
-    "build": "npm run build:wp",
+    "build": "npm run build:wp && npm run build:ts",
     "build:wp": "webpack",
     "build:ts": "tsc --diagnostics --project .",
     "watch": "concurrently \"npm run watch:wp\" \"npm run watch:ts\"",
