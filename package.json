@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "setup": "npm install && npm prune && npm run rebuild",
-    "start": "node ./dist/app.js",
+    "start": "node ./app.js",
     "start:watch": "concurrently --kill-others \"npm run start\" \"npm run watch\"",
     "clean": "rimraf dist/*",
     "rebuild": "npm run clean && npm run build",
@@ -65,7 +65,8 @@
     "redux-logger": "^2.10.2",
     "redux-thunk": "^2.2.0",
     "simple-peer": "^7.0.0",
-    "socket.io-client": "^1.7.3"
+    "socket.io-client": "^1.7.3",
+    "url-loader": "^0.5.8"
   },
   "devDependencies": {
     "@types/chai": "^3.4.35",

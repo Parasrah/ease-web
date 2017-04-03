@@ -1,13 +1,5 @@
-@font-face {
-  font-family: 'Indie Flower';
-  font-style: cursive;
-  src: url('font/IndieFlower.ttf');
-}
-@font-face {
-  font-family: 'Inconsolata';
-  font-style: normal;
-  src: url('font/Inconsolata-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 /* Color theme */
 /* Mixins */
 #center {

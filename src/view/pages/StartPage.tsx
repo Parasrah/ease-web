@@ -1,6 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
+import "../../style/start.less";
+
 import { changePageAction } from "../../actions/AppActions";
 import IState from "../../redux/State";
 import { Page } from "../../utils/Definitions";
