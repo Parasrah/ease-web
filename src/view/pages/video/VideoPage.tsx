@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { setPlayStatusAction, setVideoReadyAction } from "../../actions/VideoActions";
-import "../../style/video.less";
-import { UserType } from "../../utils/Definitions";
+import { setPlayStatusAction, setVideoReadyAction } from "../../../actions/VideoActions";
+import "../../../style/video.less";
+import { UserType } from "../../../utils/Definitions";
 
 export interface IVideoInputProps {
 

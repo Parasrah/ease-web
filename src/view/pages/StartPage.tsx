@@ -1,9 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { changePageAction } from "../actions/AppActions";
-import IState from "../redux/State";
-import { Page } from "../utils/Definitions";
+import { changePageAction } from "../../actions/AppActions";
+import IState from "../../redux/State";
+import { Page } from "../../utils/Definitions";
 
 interface IStartPageInputProps {
 

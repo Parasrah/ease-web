@@ -2,14 +2,14 @@ import * as Guid from "guid";
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { setIDAction } from "../actions/CommonPeerActions";
+import { setIdAction } from "../actions/CommonPeerActions";
 import "../style/main.less";
 import { Page } from "../utils/Definitions";
-import { StartPageContainer } from "./StartPage";
-import { VideoClientPageContainer } from "./video/VideoClientPage";
+import { StartPageContainer } from "./pages/StartPage";
+import { VideoClientPageContainer } from "./pages/video/VideoClientPage";
 
 interface IAppWrapperDispatchProps {
-    setIDDispatch: setIDAction;
+    setIdDispatch: setIdAction;
 }
 
 interface IAppWrapperStoreProps {
@@ -29,6 +29,7 @@ export class AppWrapper extends React.Component<AppWrapperProps, IAppWrapperStat
         super(props);
 
         this.mapPage(Page.START);
+        this.props.setIdDispatch(Guid.raw());
     }
 
     private mapPage(page: Page) {
@@ -60,7 +61,7 @@ export class AppWrapper extends React.Component<AppWrapperProps, IAppWrapperStat
 
     public static mapDispatchToProps(dispatch): IAppWrapperDispatchProps {
         return {
-            setIDDispatch: (id) => setIDAction(id),
+            setIdDispatch: (id) => setIdAction(id),
         };
     }
 }
