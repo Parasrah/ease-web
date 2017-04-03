@@ -142,6 +142,7 @@
         ],
         "triple-equals": [
             false
-        ]
+        ],
+        "no-empty": false
     }
 }
