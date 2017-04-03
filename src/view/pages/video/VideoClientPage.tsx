@@ -1,14 +1,14 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { setPlayStatusAction, setVideoReadyAction } from "../../actions/VideoActions";
-import { ClientMessenger } from "../../communications/ClientMessenger";
-import { ClientReceiver } from "../../communications/ClientReceiver";
+import { setPlayStatusAction, setVideoReadyAction } from "../../../actions/VideoActions";
+import { ClientMessenger } from "../../../communications/ClientMessenger";
+import { ClientReceiver } from "../../../communications/ClientReceiver";
+import { HostMessageType, IDurationMessage, IPlayMessage, ITimeMessage } from "../../../messages/ControlMessage";
+import { ClientPeerManager } from "../../../peer/ClientPeerManager";
+import IState from "../../../redux/State";
+import { UserType } from "../../../utils/Definitions";
 import { VideoElement } from "../../components/VideoElement";
-import { HostMessageType, IDurationMessage, IPlayMessage, ITimeMessage } from "../../messages/ControlMessage";
-import { ClientPeerManager } from "../../peer/ClientPeerManager";
-import IState from "../../redux/State";
-import { UserType } from "../../utils/Definitions";
 import { IVideoDispatchProps, IVideoInputProps, IVideoStoreProps, VideoPage } from "./VideoPage";
 
 interface IClientInputProps extends IVideoInputProps {
