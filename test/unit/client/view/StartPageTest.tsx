@@ -3,8 +3,8 @@ import { mount } from "enzyme";
 import * as React from "react";
 import { spy } from "sinon";
 
-import { StartPageContainer } from "../../src/view/pages/StartPage";
-import { getComponent } from "../utils/ReactUtils";
+import { StartPageContainer } from "../../../../src/view/pages/StartPage";
+import { getComponent } from "../../../tools/ReactUtils";
 
 describe("StartPage", function() {
 

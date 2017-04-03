@@ -7,8 +7,6 @@
     "setup": "npm install && npm prune && npm run rebuild",
     "start": "node ./dist/app.js",
     "start:watch": "concurrently --kill-others \"npm run start\" \"npm run watch\"",
-    "test": "npm run test:react",
-    "test:react": "mocha --recursive dist/test/react --opts ./test/react/mocha.opts",
     "clean": "rimraf dist/*",
     "rebuild": "npm run clean && npm run build",
     "build": "npm run build:wp && npm run build:ts",
@@ -19,7 +17,17 @@
     "watch:ts": "tsc -w",
     "lint": "npm run lint:src && npm run lint:test",
     "lint:src": "tslint \"src/**/*.ts?(x)\" --project ./tslint.json",
-    "lint:test": "tslint \"test/**/*.ts?(x)\" --project ./tslint.json"
+    "lint:test": "tslint \"test/**/*.ts?(x)\" --project ./tslint.json",
+    "test": "npm run test:unit && npm run test:unit:server",
+    "test:unit": "npm run test:unit:client && npm run test:unit:server",
+    "test:unit:client": "npm run test:unit:client:communications && npm run test:unit:client:peer && npm run test:unit:client:reducers && npm run test:unit:client:view",
+    "test:unit:client:communications": "echo NO_COMMS_TESTS",
+    "test:unit:client:peer": "mocha --recursive dist/test/unit/client/peer",
+    "test:unit:client:peer-debug": "npm run test:unit:client:peer -- --debug",
+    "test:unit:client:reducers": "echo NO_REDUCER_TEST",
+    "test:unit:client:view": "mocha --recursive dist/test/unit/client/view --opts ./test/support/mocha.opts",
+    "test:unit:client:view-debug": "npm run test:unit:client:view -- --debug",
+    "test:unit:server": "echo NO_SERVER_TESTS"
   },
   "repository": {
     "type": "git",
