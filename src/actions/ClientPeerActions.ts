@@ -8,9 +8,9 @@ import { ActionType } from "./Action";
 /********************* Action Definitions ********************/
 /*************************************************************/
 
-export type ClientPeerAction = ISetHostIDAction | ISetPeerStatusAction;
+export type ClientPeerAction = ISetHostIdAction | ISetPeerStatusAction;
 
-export interface ISetHostIDAction extends Action {
+export interface ISetHostIdAction extends Action {
     readonly hostID: string;
 }
 
@@ -22,14 +22,14 @@ export interface ISetPeerStatusAction extends Action {
 /*********************** Action Creators *********************/
 /*************************************************************/
 
-export const setHostIDAction = (hostID: string): ISetHostIDAction => {
+export const setHostIdAction = (hostID: string): ISetHostIdAction => {
     return {
         type: ActionType.clientPeerAction.setHostIDAction,
         hostID,
     };
 };
 
-export type setHostIDAction = (hostID: string) => ISetHostIDAction;
+export type setHostIdAction = (hostID: string) => ISetHostIdAction;
 
 export const setPeerStatusAction: setPeerStatusAction = (peerStatus) => {
     return {

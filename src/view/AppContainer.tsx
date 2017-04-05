@@ -3,11 +3,11 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { setIdAction } from "../actions/CommonPeerActions";
+import { IState } from "../redux/State";
 import "../style/main.less";
 import { Page } from "../utils/Definitions";
 import { StartPageContainer } from "./pages/StartPage";
 import { VideoClientPageContainer } from "./pages/video/VideoClientPage";
-import { IState } from "../redux/State";
 
 interface IAppWrapperDispatchProps {
     setIdDispatch: setIdAction;
