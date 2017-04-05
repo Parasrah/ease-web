@@ -78,10 +78,11 @@ export class StartPage extends React.Component<StartPageProps, IStartPageState> 
                 </span>
                 <div className="input-wrapper">
                     <input
-                        type="number"
+                        type="text"
                         className="id-input"
                         onKeyDown={this.idInputKeyDown}
                         ref={this.setIdInput}
+                        autoFocus={true}
                     />
                     <IconButton
                         className="join"
