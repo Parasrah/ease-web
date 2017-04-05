@@ -1,5 +1,9 @@
 const express = require("express");
 
+// cfenv provides access to your Cloud Foundry environment
+// for more info, see: https://www.npmjs.com/package/cfenv
+const cfenv = require('cfenv');
+
 const app = express();
 
 const port = process.env.PORT || 8340;

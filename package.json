@@ -54,6 +54,7 @@
   },
   "homepage": "https://github.com/Right2Drive/ease-web#readme",
   "dependencies": {
+    "cfenv": "^1.0.4",
     "express": "^4.15.2",
     "guid": "0.0.12",
     "material-design-lite": "^1.3.0",
