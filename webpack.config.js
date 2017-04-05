@@ -6,16 +6,12 @@ module.exports = {
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
+    devtool: "eval-source-map",
 
-    target: "node",
-
-    node: {
-        __dirname: false
-    },
+    target: "web",
 
     resolve: {
-        // Add '.ts' and '.tsx' as resolvable extensions.
+        // Add '.less', '.ts' and '.tsx' as resolvable extensions.
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx", ".less"]
     },
 
@@ -50,9 +46,21 @@ module.exports = {
                 ]
             },
             {
-                test: /\.[ot]tf$/,
-                loader: 'file-loader?limit=65000&mimetype=application/octet-stream&name=style/font/[name].[ext]'
-            },
+                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            }, {
+                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            }, {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+            }, {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "file"
+            }, {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+            }
         ]
     },
 

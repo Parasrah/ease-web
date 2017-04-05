@@ -1,5 +1,5 @@
 import { ActionType } from "../actions/Action";
-import { ClientPeerAction, ISetHostIDAction, ISetPeerStatusAction } from "../actions/ClientPeerActions";
+import { ClientPeerAction, ISetHostIdAction, ISetPeerStatusAction } from "../actions/ClientPeerActions";
 import { IClientPeerState } from "../redux/State";
 
 const initialClientPeerState: IClientPeerState = {
@@ -14,7 +14,7 @@ const clientPeerState = (state: IClientPeerState = initialClientPeerState, actio
 
         case types.setHostIDAction:
             return Object.assign({}, state, {
-                hostID: (action as ISetHostIDAction).hostID,
+                hostID: (action as ISetHostIdAction).hostID,
             });
 
         case types.setPeerStatusAction:

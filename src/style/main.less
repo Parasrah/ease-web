@@ -1,14 +1,8 @@
-@font-face {
-    font-family: 'Indie Flower';
-    font-style: cursive;
-    src: url('./font/IndieFlower.ttf');
-}
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
-@font-face {
-    font-family: 'Inconsolata';
-    font-style: normal;
-    src: url('./font/Inconsolata-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
 
 /* Color theme */
 
@@ -43,12 +37,23 @@
     font-family: 'Inconsolata', regular;
 }
 
+#satisfy {
+    font-family: 'Satisfy', cursive;
+}
+
 /* Rules */
 
 body {
     #indie-flower;
 
     background-color: @background-color;
+    position: relative;
+
+    #app {
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+    }
 
     > input [type='number'] {
         -moz-appearance: textfield;
