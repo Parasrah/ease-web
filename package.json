@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Web client for ease video player",
   "main": "app.js",
+  "engines": {
+    "node" : ">=6.10.1"
+  },
   "scripts": {
     "setup": "npm install && npm prune && npm run rebuild",
     "start": "node ./app.js",
