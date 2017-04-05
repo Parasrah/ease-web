@@ -8,6 +8,7 @@ import "../../style/start.less";
 import { changePageAction } from "../../actions/AppActions";
 import IState from "../../redux/State";
 import { Page } from "../../utils/Definitions";
+import { setIdAction } from "../../actions/CommonPeerActions";
 
 interface IStartPageInputProps {
 
@@ -19,6 +20,7 @@ interface IStartPageStoreProps {
 
 interface IStartPageDispatchProps {
     changePageDispatch: changePageAction;
+    setIdDispatch: setIdAction;
 }
 
 interface IStartPageState {
@@ -49,6 +51,7 @@ export class StartPage extends React.Component<StartPageProps, IStartPageState> 
         else if (!Guid.isGuid(guid)) {
             // TODO warning message
         }
+        this.props.setIdDispatch(guid);
         this.props.changePageDispatch(Page.VIDEO_CLIENT);
     }
 
@@ -106,6 +109,7 @@ export class StartPage extends React.Component<StartPageProps, IStartPageState> 
     public static mapDispatchToProps(dispatch): IStartPageDispatchProps {
         return {
             changePageDispatch: (page) => dispatch(changePageAction(page)),
+            setIdDispatch: (id) => dispatch(setIdAction(id)),
         };
     }
 }
