@@ -7,13 +7,14 @@ import "../style/main.less";
 import { Page } from "../utils/Definitions";
 import { StartPageContainer } from "./pages/StartPage";
 import { VideoClientPageContainer } from "./pages/video/VideoClientPage";
+import { IState } from "../redux/State";
 
 interface IAppWrapperDispatchProps {
     setIdDispatch: setIdAction;
 }
 
 interface IAppWrapperStoreProps {
-
+    page: Page;
 }
 
 interface IAppWrapperState {
@@ -47,15 +48,21 @@ export class AppWrapper extends React.Component<AppWrapperProps, IAppWrapperStat
         }
     }
 
+    public componentWillReceiveProps = (nextProps: AppWrapperProps) => {
+        if (this.props.page !== nextProps.page) {
+            this.mapPage(nextProps.page);
+        }
+    }
+
     public render(): JSX.Element {
         return this.pageElement;
     }
 
     /*********************** Redux ***************************/
 
-    public static mapStateToProps(state: IAppWrapperState): IAppWrapperStoreProps {
+    public static mapStateToProps(state: IState): IAppWrapperStoreProps {
         return {
-
+            page: state.appState.page,
         };
     }
 

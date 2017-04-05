@@ -4,13 +4,13 @@ const app = express();
 
 const port = process.env.PORT || 8340;
 
-app.use("/public", express.static(__dirname + "dist/public"));
+app.use("/", express.static(__dirname));
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/bundle.js", (req, res) => {
+app.get("/dist/bundle.js", (req, res) => {
     res.sendFile(__dirname + "/dist/bundle.js");
 });
 

@@ -19,6 +19,7 @@ export class ClientSignaler extends AbstractSignaler {
         this.offerData = [];
         this.responseData = [];
         this.socket.on("response", this.dealWithResponse);
+        this.socket.on("error", this.dealWithError);
     }
 
     public onResponse(deliverSignal: (signalData: SimplePeer.SignalData) => void) {
@@ -73,5 +74,9 @@ export class ClientSignaler extends AbstractSignaler {
                 });
             }
         }
+    }
+
+    private dealWithError(error) {
+        console.log(error);
     }
 }

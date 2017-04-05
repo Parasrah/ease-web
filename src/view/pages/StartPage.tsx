@@ -9,7 +9,6 @@ import { changePageAction } from "../../actions/AppActions";
 import { setIdAction } from "../../actions/CommonPeerActions";
 import IState from "../../redux/State";
 import { Page } from "../../utils/Definitions";
-import { setIdAction } from "../../actions/CommonPeerActions";
 
 interface IStartPageInputProps {
 
@@ -52,8 +51,10 @@ export class StartPage extends React.Component<StartPageProps, IStartPageState> 
         else if (!Guid.isGuid(guid)) {
             // TODO warning message
         }
-        this.props.setIdDispatch(guid);
-        this.props.changePageDispatch(Page.VIDEO_CLIENT);
+        else {
+            this.props.setIdDispatch(guid);
+            this.props.changePageDispatch(Page.VIDEO_CLIENT);
+        }
     }
 
     /*********************** Callbacks ***************************/
