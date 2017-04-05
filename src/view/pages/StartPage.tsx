@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import "../../style/start.less";
 
 import { changePageAction } from "../../actions/AppActions";
+import { setIdAction } from "../../actions/CommonPeerActions";
 import IState from "../../redux/State";
 import { Page } from "../../utils/Definitions";
 import { setIdAction } from "../../actions/CommonPeerActions";
