@@ -1,6 +1,67 @@
-.start-page {
-    text-align: center;
+@import "main.less";
+
+#border-round(@size) {
+    -moz-border-radius: @size;
+    -moz-border-radius: @size;
+    -webkit-border-radius: @size;
+    -webkit-border-radius: @size;
+    border-radius: @size;
+    border-radius: @size;
 }
 
-.id-input {
+.start-page {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+          align-items: center;
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;
+     justify-content: center;
+     flex-flow: column;
+
+    .logo {
+        #satisfy;
+
+        font-size: 100px;
+        position: relative;
+        margin-bottom: 50px;
+        color: white;
+    }
+
+    .input-wrapper {
+        position: relative;
+
+        .id-input {
+            #border-round(15px);
+            #inconsolata;
+
+            overflow: hidden;
+            font-size: 20px;
+            height: 30px;
+            width: 200px;
+            margin-left: 30px;
+            border: thin solid #212121;
+            border-right: none;
+            text-indent: 10px;
+        }
+
+        .join {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            right: 30px;
+            bottom: 4px;
+            background-color: white;
+            color: grey;
+            border: none;
+        }
+
+        :focus {
+            outline: none;
+        }
+    }
 }
+

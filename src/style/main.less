@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
 /* Color theme */
 
 @background-color: #303030;
@@ -35,12 +37,23 @@
     font-family: 'Inconsolata', regular;
 }
 
+#satisfy {
+    font-family: 'Satisfy', cursive;
+}
+
 /* Rules */
 
 body {
     #indie-flower;
 
     background-color: @background-color;
+    position: relative;
+
+    #app {
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+    }
 
     > input [type='number'] {
         -moz-appearance: textfield;
