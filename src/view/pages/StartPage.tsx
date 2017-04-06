@@ -60,7 +60,7 @@ export class StartPage extends React.Component<StartPageProps, IStartPageState> 
     /*********************** Callbacks ***************************/
 
     private idInputKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-        if (event.key == "enter") {
+        if (event.keyCode == 13) {
             this.submit();
         }
     }

@@ -1,0 +1,8 @@
+{
+  "short_name": "Ease Web",
+  "name": "Ease Web Video Streaming Client",
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#303030",
+  "theme_color": "#212121",
+  "display": "standalone"
+}

@@ -28,6 +28,10 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/manifest.json", (req, res) => {
+    res.sendfile(__dirname + "/manifest.json");
+})
+
 // Listen
 app.listen(port, "0.0.0.0", () => {
     console.log("The action happens at https://localhost:" + port);

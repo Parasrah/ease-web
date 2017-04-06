@@ -86,8 +86,6 @@ export class VideoClientPage extends VideoPage<IClientProps> {
     public render(): JSX.Element {
         return (
             <div className="video">
-                <b> ID: </b> {this.props.id}
-                <button onClick={this.peerManager.reconnect}>reconnect</button>
                 <VideoElement
                     poster=""
                     videoSource=""
