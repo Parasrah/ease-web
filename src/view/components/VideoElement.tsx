@@ -22,6 +22,7 @@ interface IVideoElementProps {
     onVolumeChange(volume: number): void;
     onMouseMove(): void;
     onVideoClick(): void;
+    onReconnectButton(): void;
 }
 
 export const VideoElement = (props: IVideoElementProps): JSX.Element => {
@@ -50,6 +51,7 @@ export const VideoElement = (props: IVideoElementProps): JSX.Element => {
                 onVolumeButton={props.onVolumeButton}
                 onCastButton={props.onCastButton}
                 onFullscreenButton={props.onFullscreenButton}
+                onReconnectButton={props.onReconnectButton}
                 onSeek={props.onSeek}
                 onVolumeChange={props.onVolumeChange}
                 time={props.time}

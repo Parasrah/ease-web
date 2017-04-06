@@ -16,6 +16,7 @@ export interface IControlsProps {
     onFullscreenButton?(): void;
     onSeek?(time: number): void;
     onVolumeChange?(volume: number): void;
+    onReconnectButton?(): void;
 }
 
 export interface IControlsState {
@@ -33,6 +34,15 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
             mute: false,
         };
 
+        // Setup bindings
+        this.onVolumeButtonClick = this.onVolumeButtonClick.bind(this);
+        this.onCastButtonClick = this.onCastButtonClick.bind(this);
+        this.onFullscreenButtonClick = this.onFullscreenButtonClick.bind(this);
+        this.onReconnectClick = this.onReconnectClick.bind(this);
+        this.onPlayPauseClick = this.onPlayPauseClick.bind(this);
+        this.onVolumeChange = this.onVolumeChange.bind(this);
+        this.onPlaybackChange = this.onPlaybackChange.bind(this);
+
         this.formattedTime = this.secondsToHms(this.state.time);
     }
 
@@ -46,20 +56,20 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
 
     /********************* Callbacks *************************/
 
-    private onPlayPauseClick: React.EventHandler<React.MouseEvent<HTMLElement>> = (event) => {
+    private onPlayPauseClick(event: React.MouseEvent<HTMLElement>) {
         if (this.props.onPlayPauseButton) {
             this.props.onPlayPauseButton();
         }
     }
 
-    private onVolumeChange: React.EventHandler<React.FormEvent<Slider>> = (event) => {
+    private onVolumeChange(event: React.FormEvent<Slider>) {
         const volume = (event.target as any).valueAsNumber;
         if (this.props.onVolumeChange) {
             this.props.onVolumeChange(volume);
         }
     }
 
-    private onPlaybackChange: React.EventHandler<React.FormEvent<Slider>> = (event) => {
+    private onPlaybackChange(event: React.FormEvent<Slider>) {
         const currTime = (event.target as any).valueAsNumber;
         this.setState({
             time: currTime,
@@ -69,7 +79,7 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
         }
     }
 
-    private onVolumeButtonClick = () => {
+    private onVolumeButtonClick() {
         this.setState({
             mute: !this.state.mute,
         });
@@ -78,15 +88,21 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
         }
     }
 
-    private onCastButtonClick = () => {
+    private onCastButtonClick() {
         if (this.props.onCastButton) {
             this.props.onCastButton();
         }
     }
 
-    private onFullscreenButtonClick = () => {
+    private onFullscreenButtonClick() {
         if (this.props.onFullscreenButton) {
             this.props.onFullscreenButton();
+        }
+    }
+
+    private onReconnectClick() {
+        if (this.props.onReconnectButton) {
+            this.props.onReconnectButton();
         }
     }
 
@@ -130,6 +146,7 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
                     </div>
                     <div className="bar-right">
                         <IconButton className="cast-button" name="cast" onClick={this.onCastButtonClick} />
+                        <IconButton className="reconnect-button" name="cached" onClick={this.onReconnectClick} />
                         <IconButton className="fullscreen-button" name="fullscreen" onClick={this.onFullscreenButtonClick} />
                     </div>
                 </div>
