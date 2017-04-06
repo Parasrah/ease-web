@@ -105,6 +105,7 @@ export class VideoClientPage extends VideoPage<IClientProps> {
                     onMouseMove={this.onMouseMove}
                     onVideoWheel={this.onVideoWheel}
                     onVideoClick={this.togglePlay}
+                    onReconnectButton={this.peerManager.reconnect}
                 />
             </div>
         );
