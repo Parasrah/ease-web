@@ -1,4 +1,5 @@
 import * as React from "react";
+import { IconButton, Spinner } from "react-mdl";
 import { connect } from "react-redux";
 
 import { setPlayStatusAction, setVideoReadyAction } from "../../../actions/VideoActions";
@@ -9,7 +10,7 @@ import { ClientPeerManager } from "../../../peer/ClientPeerManager";
 import IState from "../../../redux/State";
 import { UserType } from "../../../utils/Definitions";
 import { VideoElement } from "../../components/VideoElement";
-import { IVideoDispatchProps, IVideoInputProps, IVideoStoreProps, VideoPage } from "./VideoPage";
+import { IVideoDispatchProps, IVideoInputProps, IVideoState, IVideoStoreProps, VideoPage } from "./VideoPage";
 
 interface IClientInputProps extends IVideoInputProps {
 
@@ -23,21 +24,32 @@ interface IClientDispatchProps extends IVideoDispatchProps {
 
 }
 
+interface IVideoClientState extends IVideoState {
+
+}
+
 type IClientProps = IClientInputProps & IClientStoreProps & IClientDispatchProps;
 
 export class VideoClientPage extends VideoPage<IClientProps> {
     private peerManager: ClientPeerManager;
     private messenger: ClientMessenger;
     private receiver: ClientReceiver;
+    private spinner: JSX.Element;
 
     constructor(props) {
         super(props);
+
+        // Bindings
+        this.getSpinner = this.getSpinner.bind(this);
+
+        // Initialization
         this.type = UserType.CLIENT;
         this.peerManager = new ClientPeerManager();
         this.messenger = this.peerManager.getMessenger();
         this.receiver = this.peerManager.getReceiver();
         this.peerManager.onStream(this.stream);
         this.setupReceiver();
+        this.spinner = this.getSpinner(this.state.showVideo);
     }
 
     private setupReceiver = () => {
@@ -64,6 +76,24 @@ export class VideoClientPage extends VideoPage<IClientProps> {
         this.showVideo();
     }
 
+    private getSpinner(showVideo: boolean): JSX.Element {
+        switch (showVideo) {
+            case false:
+                return (
+                    <div className="spinner-wrapper">
+                        <Spinner className="spinner"/>
+                        <IconButton
+                            className="spinner-reconnect"
+                            name="cached"
+                            onClick={this.peerManager.reconnect}
+                        />
+                    </div>
+                );
+            default:
+                return <div className="hidden" />;
+        }
+    }
+
     /********************* Video Listeners ***********************/
 
     protected togglePlay = () => {
@@ -84,9 +114,16 @@ export class VideoClientPage extends VideoPage<IClientProps> {
 
     /********************* React Lifecycle ***********************/
 
+    public componentWillUpdate(nextProps: IClientProps, nextState: IVideoClientState) {
+        if (this.state.showVideo != nextState.showVideo) {
+            this.spinner = this.getSpinner(nextState.showVideo);
+        }
+    }
+
     public render(): JSX.Element {
         return (
             <div className="video">
+                {this.spinner}
                 <VideoElement
                     poster=""
                     videoSource=""
