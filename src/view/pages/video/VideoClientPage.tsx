@@ -61,6 +61,7 @@ export class VideoClientPage extends VideoPage<IClientProps> {
     private stream = (stream: MediaStream) => {
         this.video.srcObject = stream;
         this.video.play();
+        this.showVideo();
     }
 
     /********************* Video Listeners ***********************/
@@ -101,11 +102,12 @@ export class VideoClientPage extends VideoPage<IClientProps> {
                     time={this.state.time}
                     volume={this.state.volume}
                     play={this.props.play}
-                    show={this.state.show}
+                    showControls={this.state.showControls}
                     onMouseMove={this.onMouseMove}
                     onVideoWheel={this.onVideoWheel}
                     onVideoClick={this.togglePlay}
                     onReconnectButton={this.peerManager.reconnect}
+                    hidden={!this.state.showVideo}
                 />
             </div>
         );
