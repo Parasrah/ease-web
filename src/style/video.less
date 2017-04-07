@@ -1,8 +1,6 @@
 @import "main.less";
 
-.video {
-    height: 100%;
-    background-color: @primary-color;
+#center {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13,10 +11,44 @@
     -ms-flex-pack: center;
     justify-content: center;
     flex-flow: column;
+}
+
+.video {
+    #center;
+
+    height: 100%;
+    width: 100%;
+    background-color: @primary-color;
  
     .react-video-wrapper {
         position: relative;
         width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
     }
+
+    .spinner-wrapper {
+        position: relative;
+        height: 80px;
+        width: 80px;
+
+        .spinner {
+            height: 100%;
+            width: 100%;
+        }
+
+        .spinner-reconnect {
+            position: absolute;
+            top: 26px;
+            left: 26px;
+            color: white;
+        }
+    }    
 }
 

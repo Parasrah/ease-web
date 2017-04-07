@@ -25,7 +25,8 @@ export interface IVideoState {
     volume: number;
     muted: boolean;
     duration: number;
-    show: boolean;
+    showControls: boolean;
+    showVideo: boolean;
 }
 
 export type IVideoProps = IVideoInputProps & IVideoStoreProps & IVideoDispatchProps;
@@ -45,7 +46,8 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
             volume: 100,
             muted: false,
             duration: 100,
-            show: true,
+            showControls: true,
+            showVideo: false,
         };
 
         this.type = UserType.PENDING;
@@ -63,6 +65,12 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         }
         this.setState({
             time: check,
+        });
+    }
+
+    protected showVideo() {
+        this.setState({
+            showVideo: true,
         });
     }
 
@@ -116,13 +124,13 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
 
     private showControls = () => {
         this.setState({
-            show: true,
+            showControls: true,
         });
     }
 
     private hideControls = () => {
         this.setState({
-            show: false,
+            showControls: false,
         });
     }
 
