@@ -82,10 +82,11 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         else if (check < 0) {
             check = 0;
         }
-        this.updateVideoVolume(check);
         this.setState({
             volume: check,
+            muted: false,
         });
+        this.updateVideoVolume(check, false);
     }
 
     protected toggleFullscreen = () => {
@@ -108,7 +109,7 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         this.setState({
             muted: !this.state.muted,
         });
-        this.updateVideoVolume();
+        this.updateVideoVolume(undefined, !this.state.muted);
     }
 
     protected onMouseMove = () => {
@@ -162,13 +163,14 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         });
     }
 
-    protected updateVideoVolume(volume?: number) {
-        if (volume) {
-            this.video.volume = this.state.muted ? 0 : (volume / 100);
+    protected updateVideoVolume(volume?: number, muted?: boolean) {
+        if (volume === undefined) {
+            volume = this.state.volume;
         }
-        else {
-            this.video.volume = this.state.muted ? 0 : (this.state.volume / 100);
+        if (muted === undefined) {
+            muted = this.state.muted;
         }
+        this.video.volume = muted ? 0 : (volume / 100);
     }
 
     /******************** Abstract Methods *******************/
