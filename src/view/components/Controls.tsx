@@ -26,6 +26,7 @@ export interface IControlsState {
 
 export class Controls extends React.Component<IControlsProps, IControlsState> {
     private formattedTime;
+    private volumeSliderValue: number;
 
     constructor(props) {
         super(props);
@@ -43,6 +44,8 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
         this.onVolumeChange = this.onVolumeChange.bind(this);
         this.onPlaybackChange = this.onPlaybackChange.bind(this);
 
+        // Initialization
+        this.volumeSliderValue = 100;
         this.formattedTime = this.secondsToHms(this.state.time);
     }
 
@@ -67,6 +70,11 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
         if (this.props.onVolumeChange) {
             this.props.onVolumeChange(volume);
         }
+        setTimeout(function() {
+            this.setState({
+                mute: false,
+            });
+        }.bind(this), 0);
     }
 
     private onPlaybackChange(event: React.FormEvent<Slider>) {
@@ -117,6 +125,16 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
         }
     }
 
+    protected componentWillUpdate(nextProps: IControlsProps, nextState: IControlsState) {
+        // Calucalte value for volume slider
+        if (nextState.mute) {
+            this.volumeSliderValue = 0;
+        }
+        else {
+            this.volumeSliderValue = (this.props.volume !== undefined) ? this.props.volume : 100;
+        }
+    }
+
     public render() {
         return (
             <div
@@ -135,7 +153,7 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
                         <IconButton className="volume-button" name={(this.state.mute) ? "volume_mute" : "volume_up"} onClick={this.onVolumeButtonClick} />
                         <Slider
                             className="volume-slider"
-                            value={(this.props.volume !== undefined) ? this.props.volume : 100}
+                            value={this.volumeSliderValue}
                             min={0}
                             max={100}
                             onChange={this.onVolumeChange}
