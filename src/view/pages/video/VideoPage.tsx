@@ -82,6 +82,7 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         else if (check < 0) {
             check = 0;
         }
+        this.updateVideoVolume(check);
         this.setState({
             volume: check,
         });
@@ -107,6 +108,7 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         this.setState({
             muted: !this.state.muted,
         });
+        this.updateVideoVolume();
     }
 
     protected onMouseMove = () => {
@@ -160,6 +162,15 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
         });
     }
 
+    protected updateVideoVolume(volume?: number) {
+        if (volume) {
+            this.video.volume = this.state.muted ? 0 : (volume / 100);
+        }
+        else {
+            this.video.volume = this.state.muted ? 0 : (this.state.volume / 100);
+        }
+    }
+
     /******************** Abstract Methods *******************/
 
     protected abstract togglePlay: () => void;
@@ -170,10 +181,6 @@ export abstract class VideoPage<P extends IVideoProps> extends React.Component<P
 
     protected componentDidMount() {
         this.setupVideoShortcuts();
-    }
-
-    protected componentWillUpdate(nextProps: IVideoProps, nextState: IVideoState) {
-        this.video.volume = nextState.muted ? 0 : (nextState.volume / 100);
     }
 
     public abstract render(): JSX.Element;
