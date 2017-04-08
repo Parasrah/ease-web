@@ -70,6 +70,11 @@ export class Controls extends React.Component<IControlsProps, IControlsState> {
         if (this.props.onVolumeChange) {
             this.props.onVolumeChange(volume);
         }
+        setTimeout(function() {
+            this.setState({
+                mute: false,
+            });
+        }.bind(this), 0);
     }
 
     private onPlaybackChange(event: React.FormEvent<Slider>) {
