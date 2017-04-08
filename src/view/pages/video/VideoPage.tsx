@@ -32,7 +32,7 @@ export interface IVideoState {
 export type IVideoProps = IVideoInputProps & IVideoStoreProps & IVideoDispatchProps;
 
 export abstract class VideoPage<P extends IVideoProps> extends React.Component<P, IVideoState> {
-    private readonly SHOW_CONTROLS_TIME = 5000;
+    private readonly SHOW_CONTROLS_TIME = 3500;
     protected video: HTMLVideoElement;
     protected videoWrapper: HTMLDivElement;
     protected timer: number;
