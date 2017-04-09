@@ -45,9 +45,17 @@
 
         .spinner-reconnect {
             position: absolute;
-            top: 26px;
-            left: 26px;
             color: white;
+
+            @media @phone {
+                top: 25px;
+                left: 25px;
+            }
+
+            @media @desktop {
+                top: 25px;
+                left: 25px;
+            }
         }
     }    
 }
