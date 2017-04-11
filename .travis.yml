@@ -10,4 +10,5 @@ script:
 - npm run build
 - npm run clean
 - npm run build:prod
+- npm run build:ts
 - npm test
