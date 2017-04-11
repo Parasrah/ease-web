@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -12,21 +13,7 @@ const port = process.env.PORT || 8340;
 const production = process.env.NODE_ENV == "development" ? false : true;
 console.log("Running in " + (production ? "production" : "development") + " environment");
 
-if (production) {
-    // Run in production mode, expose limited files
-    app.get("/dist/bundle.js", (req, res) => {
-        res.sendFile(__dirname + "/dist/bundle.js");
-    });
-}
-else {
-    // Run in development mode, expose root
-    app.use("/", express.static(__dirname));
-}
-
-// Expose index.html
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
-});
+app.use("/", express.static(path.resolve(__dirname, "dist", "public")));
 
 app.get("/manifest.json", (req, res) => {
     res.sendfile(__dirname + "/manifest.json");
