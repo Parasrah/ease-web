@@ -16,6 +16,18 @@ app.get("/dist/bundle.js", (req, res) => {
     res.sendFile(__dirname + "/dist/bundle.js");
 });
 
+app.get("/dist/bundle.js.map", (req, res) => {
+    res.sendFile(__dirname + "/dist/bundle.js.map");
+});
+
+app.get("/dist/styles.css", (req, res) => {
+    res.sendFile(__dirname + "/dist/styles.css");
+});
+
+app.get("/dist/styles.css.map", (req, res) => {
+    res.sendFile(__dirname + "/dist/styles.css.map");
+});
+
 // Expose index
 app.get("/", (req, res) => {
 

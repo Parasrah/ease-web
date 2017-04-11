@@ -34,20 +34,16 @@ module.exports = function() {
                 },
                 {
                     test: /\.css$/,
-                    use: ['style-loader', 'css-loader']
+                    use: ExtractTextPlugin.extract({
+                        use: 'css-loader'
+                    })
                 },
                 {
                     test: /\.less$/,
-                    use: [
-                        'style-loader',
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1
-                            }
-                        },
-                        'less-loader'
-                    ]
+                    loader: ExtractTextPlugin.extract({ 
+                        loader:[ 'css-loader', 'less-loader' ], 
+                        fallbackLoader: 'style-loader' 
+                    })
                 },
                 {
                     test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
@@ -67,6 +63,9 @@ module.exports = function() {
                 }
             ]
         },
+        plugins: [
+            new ExtractTextPlugin('styles.css'),
+        ],
 
         // When importing a module whose path matches one of the following, just
         // assume a corresponding global variable exists and use that instead.
