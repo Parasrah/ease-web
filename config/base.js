@@ -1,13 +1,14 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function() {
     return {
         entry: path.resolve(__dirname, "..", "src", "view", "index.tsx"),
         output: {
             filename: '[name].[chunkhash].js',
-            path: path.resolve(__dirname, "..", "dist")
+            path: path.resolve(__dirname, "..", "dist", "public")
         },
 
         target: "web",
@@ -43,30 +44,30 @@ module.exports = function() {
                 {
                     test: /\.less$/,
                     use: ExtractTextPlugin.extract({ 
-                        loader:[ 'css-loader', 'less-loader' ], 
+                        use:[ 'css-loader', 'less-loader' ], 
                         fallback: 'style-loader' 
                     })
                 },
                 {
                     test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: "url-loader?limit=10000&mimetype=application/font-woff"
+                    use: "url-loader?limit=10000&mimetype=application/font-woff"
                 }, {
                     test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: "url-loader?limit=10000&mimetype=application/font-woff"
+                    use: "url-loader?limit=10000&mimetype=application/font-woff"
                 }, {
                     test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+                    use: "url-loader?limit=10000&mimetype=application/octet-stream"
                 }, {
                     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: "file"
+                    use: "file"
                 }, {
                     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                    loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+                    use: "url-loader?limit=10000&mimetype=image/svg+xml"
                 }
             ]
         },
         plugins: [
-            new ExtractTextPlugin('styles.css'),
+            new ExtractTextPlugin('styles.[chunkhash].css'),
 
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
@@ -78,6 +79,11 @@ module.exports = function() {
             //CommonChunksPlugin will now extract all the common modules from vendor and main bundles
             new webpack.optimize.CommonsChunkPlugin({ 
                 name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+            }),
+
+            new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, "..", "src", "template.html"),
+                inject: 'body',
             })
         ],
 
