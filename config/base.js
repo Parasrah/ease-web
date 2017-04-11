@@ -1,11 +1,13 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = function() {
     return {
-        entry: "./src/view/index.tsx",
+        entry: path.resolve(__dirname, "..", "src", "view", "index.tsx"),
         output: {
-            filename: "bundle.js",
-            path: __dirname + "/../dist"
+            filename: '[name].[chunkhash].js',
+            path: path.resolve(__dirname, "..", "dist")
         },
 
         target: "web",
@@ -40,9 +42,9 @@ module.exports = function() {
                 },
                 {
                     test: /\.less$/,
-                    loader: ExtractTextPlugin.extract({ 
+                    use: ExtractTextPlugin.extract({ 
                         loader:[ 'css-loader', 'less-loader' ], 
-                        fallbackLoader: 'style-loader' 
+                        fallback: 'style-loader' 
                     })
                 },
                 {
@@ -65,6 +67,18 @@ module.exports = function() {
         },
         plugins: [
             new ExtractTextPlugin('styles.css'),
+
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor',
+                minChunks: function (module) {
+                   // this assumes your vendor imports exist in the node_modules directory
+                   return module.context && module.context.indexOf('node_modules') !== -1;
+                }
+            }),
+            //CommonChunksPlugin will now extract all the common modules from vendor and main bundles
+            new webpack.optimize.CommonsChunkPlugin({ 
+                name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
+            })
         ],
 
         // When importing a module whose path matches one of the following, just

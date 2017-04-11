@@ -12,12 +12,12 @@ const port = process.env.PORT || 8340;
 const production = process.env.NODE_ENV !== "development";
 console.log("Running in " + (production ? "production" : "development") + " environment");
 
-app.get("/dist/bundle.js", (req, res) => {
-    res.sendFile(__dirname + "/dist/bundle.js");
+app.get("/dist/main.js", (req, res) => {
+    res.sendFile(__dirname + "/dist/main.js");
 });
 
-app.get("/dist/bundle.js.map", (req, res) => {
-    res.sendFile(__dirname + "/dist/bundle.js.map");
+app.get("/dist/main.js.map", (req, res) => {
+    res.sendFile(__dirname + "/dist/main.js.map");
 });
 
 app.get("/dist/styles.css", (req, res) => {
