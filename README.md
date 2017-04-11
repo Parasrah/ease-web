@@ -24,6 +24,14 @@ Head over to [Ease](https://github.com/Right2Drive/ease) to install the desktop 
 - And you can run the file-watchers using:
   
   - `npm run watch`
+
+### Building for production
+
+- All the scripts will, by default, build for a development environment. To create production files you must manually specify:
+
+  - `npm run build:prod`
+
+- The `index.html` will also point to the minified version of react if the NODE_ENV is set to `production`
   
 ### Start
 

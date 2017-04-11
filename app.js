@@ -9,23 +9,25 @@ const app = express();
 const port = process.env.PORT || 8340;
 
 // Determine if production or development
-const production = process.env.NODE_ENV == "development" ? false : true;
+const production = process.env.NODE_ENV !== "development";
 console.log("Running in " + (production ? "production" : "development") + " environment");
 
-if (production) {
-    // Run in production mode, expose limited files
-    app.get("/dist/bundle.js", (req, res) => {
-        res.sendFile(__dirname + "/dist/bundle.js");
-    });
-}
-else {
-    // Run in development mode, expose root
-    app.use("/", express.static(__dirname));
-}
+app.get("/dist/bundle.js", (req, res) => {
+    res.sendFile(__dirname + "/dist/bundle.js");
+});
 
-// Expose index.html
+// Expose index
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+
+    if (production) {
+        // Serve production index
+        res.sendFile(__dirname + "/index.html");
+    }
+    else {
+        // Serve dev index
+        res.sendFile(__dirname + "/index-dev.html");
+    }
+
 });
 
 app.get("/manifest.json", (req, res) => {
