@@ -1,13 +1,12 @@
 const webpack = require("webpack");
 const webpackMerge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
 
 const commonConfig = require('./base.js');
 
 module.exports = function() {
     return webpackMerge(commonConfig(), {
-
-        // Enable sourcemaps for debugging webpack's output.
-        devtool: "cheap-source-map",
 
         plugins: [
             new webpack.LoaderOptionsPlugin({
@@ -28,7 +27,12 @@ module.exports = function() {
                 compress: {
                     screw_ie8: true
                 },
-                comments: false
+                comments: false,
+                sourceMap: false
+            }),
+            new HtmlWebpackPlugin({
+                template: path.resolve(__dirname, "..", "templates", "prod.html"),
+                inject: 'body',
             })
         ]
     });

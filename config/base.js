@@ -1,7 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function() {
     return {
@@ -79,12 +78,8 @@ module.exports = function() {
             //CommonChunksPlugin will now extract all the common modules from vendor and main bundles
             new webpack.optimize.CommonsChunkPlugin({ 
                 name: 'manifest' //But since there are no more common modules between them we end up with just the runtime code included in the manifest file
-            }),
-
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, "..", "src", "template.html"),
-                inject: 'body',
             })
+            
         ],
 
         // When importing a module whose path matches one of the following, just
