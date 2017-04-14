@@ -68,7 +68,7 @@ export class AppWrapper extends React.Component<AppWrapperProps, IAppWrapperStat
 
     public static mapDispatchToProps(dispatch): IAppWrapperDispatchProps {
         return {
-            setIdDispatch: (id) => setIdAction(id),
+            setIdDispatch: (id) => dispatch(setIdAction(id)),
         };
     }
 }
