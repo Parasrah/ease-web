@@ -1,1 +1,1 @@
-export const SIGNAL_HOST: string = "https://bread-signal.mybluemix.net";
+export const SIGNAL_HOST: string = "http://54.69.130.216:4141";
